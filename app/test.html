@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html ng-app="demo" ng-controller="cdtcdt">
+<head>
+<title>Calendar Directive Challenge</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script> 
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.10/angular.min.js"></script>
+<script type="text/javascript" src="./utilities/calendar-range/calendarRange.js"></script>
+
+
+<style>
+.hero_wrap { outline: 0px solid red; background-color: black; height: 25px; width: 700px; margin: 0 auto; }
+.day_wrap { display: inline-block; outline: 1px solid #eee; height: 100px; width: 14%; }
+.month_title { margin: 0 auto; font-size: 50px; color: #00bcd4; }
+
+</style>
+
+<script>
+var demo = angular.module('demo', []);
+demo.controller('cdtcdt', function($scope){
+ $scope.currentDate = new Date();
+ $scope.month = $scope.currentDate.getMonth();
+ $scope.year = $scope.currentDate.getFullYear();
+ $scope.day = $scope.currentDate.getDate();
+ $scope.yearList = [];
+
+
+  $scope.datePick = {
+    	month: $scope.selectedMonth,
+    	year: $scope.selectedYear
+    };
+
+  $scope.monthList = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+
+ $scope.priorYears = $scope.year - 15;
+ $scope.afterYears = $scope.year + 15;
+  for(var i = $scope.priorYears; i <= $scope.afterYears; i++) {
+    $scope.yearList.push(i);
+  }
+
+  $scope.selectedMonth = $scope.monthList[$scope.month];
+  $scope.selectedYear = $scope.year;
+
+
+  $scope.test = CalendarRange.getMonthlyRange(new Date($scope.datePick.month, $scope.datePick.year));
+   console.log($scope.test);
+
+  $scope.$watchCollection('datePick', function(datePick){
+	$scope.newDate = new Date($scope.datePick.month, $scope.datePick.year);
+	$scope.date_range = CalendarRange.getMonthlyRange(new Date($scope.newDate))
+});
+});
+demo.directive('theCalendar', function(){
+	return{
+        restrict: 'E',
+        templateUrl: 'calendar.html'
+	}
+});
+</script>
+
+</head>
+<body>
+
+<header class="hero_wrap">
+ <div class="data_wrap">
+  <select ng-model="selectedMonth" ng-options="month as month for month in monthList"></select>
+  <select ng-model="year" ng-options="year as year for year in yearList"></select>
+ </div><!-- . data_wrap - -->
+</header><!-- . hero_wrap - -->
+
+<section class="month_wrap">
+ <p class="month_title"><strong>{{ selectedMonth }} {{ year }}</strong></p>
+</section><!-- . month_wrap - -->
+
+<the_calendar></the_calendar>
+
+
+</body>
+</html>
