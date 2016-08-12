@@ -1,0 +1,16 @@
+{
+  "name": "calendar-starter",
+  "version": "0.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "karma start app/utilities/calendar-range/karma.conf.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "karma": "^0.12.17",
+    "karma-chrome-launcher": "^0.1.5",
+    "karma-jasmine": "^0.1.5"
+  }
+}

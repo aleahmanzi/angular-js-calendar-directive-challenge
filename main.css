@@ -1,0 +1,13 @@
+.hero_wrap { outline: 0px solid red; background-color: #57B2A3; margin: 0 auto; font-family: Dosis; height: 60px; }
+select { position: relative;}
+.title_wrap { outline: 0px solid black; margin: 10px; text-align: center; }
+.text { outline: 0px solid red; color: white; font-size: 25px; width: 200px; display: inline-block; position: relative; bottom: px; right: 10px; }
+.cal_icon { outline: 0px solid blue; margin: 1px; height: 40px; position: relative; top: 10px; }
+
+.day_wrap { outline: 0px solid black; display: inline-block; outline: 1px solid #57B2A3; height: 90px; width: 14.27%; }
+.main_wrap { outline: 3px solid #57B2A3; padding: 3px; }
+.month_title { margin: 0 auto; font-family: Dosis; font-size: 50px; color: #57B2A3; }
+.week_day { outline: 0px solid red; font-family: Dosis; display: inline-block; width: 13%; margin-left: 6px; color: #57B2A3; font-size: 15px; padding-bottom: 3px; }
+.shaded { background-color: #eee; }
+.number { padding: 5px; font-family: Dosis; }
+.select_wrap { padding-bottom: 10px; }
